@@ -17,6 +17,9 @@ import FeedbackPage from "../pages/FeedbackPage";
 // bring TopBar module as middleware
 import TopBar from "../pages/components/TopBar";
 
+// bring variables from configuration as middleware
+import { username, password, timeout } from "../config";
+
 // invoke test suit end-to-end test include test steps
 describe("End-To-End Test", () => {
     // book/init a empty var for populate homePage data in scope
@@ -35,7 +38,7 @@ describe("End-To-End Test", () => {
     beforeAll(async () => {
         // fix err: Timeout - Async callback was not invoked within the 5000
         // tell jest delay 15s to initialize the home page
-        jest.setTimeout(15000);
+        jest.setTimeout(timeout);
 
         // create a new HomePage instance
         homePage = new HomePage();
@@ -91,6 +94,6 @@ describe("End-To-End Test", () => {
         await loginPage.isLoginFormDisplayed();
 
         // invoke method to login to grant access
-        await loginPage.login('username', 'password');
+        await loginPage.login(username, password);
     });
 });
