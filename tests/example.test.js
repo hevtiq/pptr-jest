@@ -3,7 +3,7 @@
 //
 // invoke test suit example include test steps
 //====================================================================
-// 'use strict';
+'use strict';
 
 // bring HomePage module as middleware
 import HomePage from "../pages/HomePage";
