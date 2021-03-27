@@ -29,7 +29,7 @@ describe("End-To-End Test", () => {
     let feedbackPage;
 
     // book/init a empty var for populate top bar data in scope
-    let topbar;
+    let topBar;
 
     // setup works before run test steps
     beforeAll(async () => {
@@ -47,7 +47,7 @@ describe("End-To-End Test", () => {
         feedbackPage = new FeedbackPage();
 
         // create a new TopBar instance
-        topbar = new TopBar();
+        topBar = new TopBar();
     });
 
     // invoke TC-XXX
@@ -74,5 +74,23 @@ describe("End-To-End Test", () => {
             'subject',
             'comment',
         );
+    });
+
+    // invoke TC-XXX
+    it('should login to application', async () => {
+        // invoke method to visit to home page
+        await homePage.visit();
+
+        // invoke method to check top bar displayed or not
+        await topBar.isTopBarDisplayed();
+
+        // invoke method to click on sign in button
+        await topBar.clickSignInButton();
+
+        // invoke method to check login form displayed or not
+        await loginPage.isLoginFormDisplayed();
+
+        // invoke method to login to grant access
+        await loginPage.login('username', 'password');
     });
 });
