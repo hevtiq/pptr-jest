@@ -1,7 +1,7 @@
 //====================================================================
-// example.test.js
+// end-to-end.test.js
 //
-// invoke test suit example include test steps
+// invoke test suit end-to-end test include test steps
 //====================================================================
 'use strict';
 
@@ -17,8 +17,8 @@ import FeedbackPage from "../pages/FeedbackPage";
 // bring TopBar module as middleware
 import TopBar from "../pages/components/TopBar";
 
-// invoke test suit example include test steps
-describe("Example", () => {
+// invoke test suit end-to-end test include test steps
+describe("End-To-End Test", () => {
     // book/init a empty var for populate homePage data in scope
     let homePage;
 
@@ -51,39 +51,18 @@ describe("Example", () => {
     });
 
     // invoke TC-XXX
-    it('homepage should work', async () => {
+    it('should load home page', async () => {
         // invoke method to access/visit to homepage
         await homePage.visit();
+
+        // invoke method to check navbar displayed or not
+        await homePage.isNavbarDisplayed();
     });
 
     // invoke TC-XXX
-    it('navbar should be displayed', async () => {
-        // invoke method to check navbar displayed or not
-        await homePage.isNavbarDisplayed();
-
-        // invoke method to check topbar displayed or not
-        await topbar.isTopBarDisplayed();
-    });
-
-    // invoke TC-XXX (test.only)
-    it('try to login', async () => {
-        // invoke method to access/visit to login page
-        await loginPage.visit();
-
-        // invoke method to check form displayed or not
-        await loginPage.isLoginFormDisplayed();
-
-        // invoke method login to grant access
-        await loginPage.login('username', 'password');
-
-        // invoke method pause with delay time (BasePage module)
-        await loginPage.wait(5000);
-    });
-
-    // invoke TC-XXX (test.only)
-    it('feedback should work', async () => {
-        // invoke method to access/visit to feedback page
-        await feedbackPage.visit();
+    it('should submit feedback', async () => {
+        // invoke method to click feedback link
+        await homePage.clickFeedbackLink();
 
         // invoke method to check form displayed or not
         await feedbackPage.isFeedbackFormDisplayed();
@@ -95,8 +74,5 @@ describe("Example", () => {
             'subject',
             'comment',
         );
-
-        // invoke method pause with delay time (BasePage module)
-        await feedbackPage.wait(5000);
     });
 });
