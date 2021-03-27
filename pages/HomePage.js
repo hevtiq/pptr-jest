@@ -8,7 +8,7 @@
 // bring BasePage module as middleware
 import BasePage from "./BasePage";
 
-// export HomePage module as middleware (with extends BasePage class)
+// export HomePage module as middleware (with extends BasePage module)
 export default class HomePage extends BasePage{
     /**
      * visit() method to make sure page displayed(loaded/rendered)

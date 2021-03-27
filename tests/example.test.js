@@ -3,18 +3,24 @@
 //
 // invoke test suit example include test steps
 //====================================================================
-'use strict';
-
-// bring TopBar module as middleware
-import TopBar from "../pages/components/TopBar";
+// 'use strict';
 
 // bring HomePage module as middleware
 import HomePage from "../pages/HomePage";
+
+// bring LoginPage module as middleware
+import LoginPage from "../pages/LoginPage";
+
+// bring TopBar module as middleware
+import TopBar from "../pages/components/TopBar";
 
 // invoke test suit example include test steps
 describe("Example", () => {
     // book/init a empty var for populate homepage data in scope
     let homepage;
+
+    // book/init a empty var for populate login page data in scope
+    let loginpage;
 
     // book/init a empty var for populate top bar data in scope
     let topbar;
@@ -30,6 +36,9 @@ describe("Example", () => {
 
         // create a new TopBar instance
         topbar = new TopBar();
+
+        // create a new LoginPage instance
+        loginpage = new LoginPage();
     });
 
     // invoke TC-XXX
@@ -45,5 +54,20 @@ describe("Example", () => {
 
         // invoke method to check topbar displayed or not
         await topbar.isTopBarDisplayed();
+    });
+
+    // invoke TC-XXX (test.only)
+    it('try to login', async () => {
+        // invoke method to access/visit to login page
+        await loginpage.visit();
+
+        // invoke method to check form displayed or not
+        await loginpage.isLoginFormDisplayed();
+
+        // invoke method login to grant access
+        await loginpage.login('username', 'password');
+
+        // invoke method pause with delay time (BasePage module)
+        await loginpage.wait(5000);
     });
 });
